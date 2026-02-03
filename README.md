@@ -1,6 +1,6 @@
-# harisdiam
+# Game_Diamond_Store
 
-A new Flutter project.
+its a prototype model of e-commerce website for selling Video games Coins or Diamonds for ingame activities or purchases.
 
 ## Getting Started
 
