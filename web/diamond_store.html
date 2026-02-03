@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Legends: Bang Bang Diamond Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Dark Gray Background */
+        }
+        /* Custom scrollbar for a more game-like feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366f1;
+        }
+        /* Style for the selected package */
+        .package-selected {
+            border-color: #facc15 !important; /* Yellow-400 */
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.5);
+        }
+        .payment-selected {
+            background-color: #4f46e5 !important;
+            color: #ffffff !important;
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <img src="cat.png" alt="Mobile Legends Logo" class="mx-auto h-20 md:h-24 object-contain">  <!--Photo or Image -->
+
+            <p class="text-gray-400 mt-2 text-lg">Official Diamond Top-up Store</p>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            <!-- Left Column: Game Info & Instructions -->
+            <div class="lg:col-span-2 bg-gray-900 p-6 rounded-2xl shadow-lg">
+                <img src="cat.jpg" 
+                     alt="Mobile Legends Game Icon" class="rounded-2xl w-full h-auto object-cover"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/1f2937/ffffff?text=Mobile+Legends';">
+                     <!--Photo or Image -->
+                
+                <div class="flex flex-wrap gap-2 mt-4 text-xs font-semibold">
+                    <span class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full">✓ 24/7 Support</span>
+                    <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full">✓ Secure Payment</span>
+                    <span class="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full">✓ Fast Delivery</span>
+                </div>
+
+                <h2 class="text-2xl font-bold mt-6 mb-3 text-white">Mobile Legends: Bang Bang</h2>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Join your friends in a brand new 5v5 MOBA showdown against real human opponents, Mobile Legends: Bang Bang! Choose your favorite heroes and build the perfect team with your comrades-in-arms!
+                </p>
+
+                <div class="mt-8 border-t border-gray-700 pt-6">
+                    <h3 class="font-bold text-lg mb-3 text-white">How to Recharge?</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-400 text-sm">
+                        <li>Enter your <span class="font-semibold text-yellow-400">User ID</span> and <span class="font-semibold text-yellow-400">Server ID</span>.</li>
+                        <li>Choose the package you want to buy.</li>
+                        <li>Select your preferred payment method.</li>
+                        <li>Click "Buy Now" and complete the payment.</li>
+                        <li>Diamonds will be credited to your account shortly.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Right Column: Purchase Form -->
+            <div class="lg:col-span-3 space-y-6">
+                <!-- Step 1: Enter IDs -->
+                <div class="bg-gray-900 p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="bg-indigo-600 text-white rounded-full h-8 w-8 text-center flex items-center justify-center font-black mr-3">1</span>
+                        Enter Your Account Details
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" id="userId" placeholder="User ID" class="w-full bg-gray-800 border-2 border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-indigo-500 transition-colors">
+                        <input type="text" id="serverId" placeholder="Server ID" class="w-full bg-gray-800 border-2 border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-indigo-500 transition-colors">
+                    </div>
+                </div>
+
+                <!-- Step 2: Select Package -->
+                <div class="bg-gray-900 p-6 rounded-2xl shadow-lg">
+                     <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="bg-indigo-600 text-white rounded-full h-8 w-8 text-center flex items-center justify-center font-black mr-3">2</span>
+                        Select Package
+                    </h3>
+                    <div id="package-container" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <!-- Diamond packages will be injected here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Step 3: Select Payment -->
+                <div class="bg-gray-900 p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <span class="bg-indigo-600 text-white rounded-full h-8 w-8 text-center flex items-center justify-center font-black mr-3">3</span>
+                        Select Payment Method
+                    </h3>
+                    <div id="payment-container" class="flex flex-wrap gap-3">
+                        <button class="payment-option flex-1 bg-gray-800 border-2 border-gray-700 rounded-lg px-4 py-3 text-center font-semibold hover:bg-gray-700 transition-colors">UPI</button>
+                        <button class="payment-option flex-1 bg-gray-800 border-2 border-gray-700 rounded-lg px-4 py-3 text-center font-semibold hover:bg-gray-700 transition-colors">Card</button>
+                        <button class="payment-option flex-1 bg-gray-800 border-2 border-gray-700 rounded-lg px-4 py-3 text-center font-semibold hover:bg-gray-700 transition-colors">Wallet</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Buy Button -->
+                <button id="buy-now-btn" class="w-full bg-yellow-500 text-gray-900 font-bold text-lg py-4 rounded-xl shadow-lg hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105">
+                    Buy Now
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for messages -->
+    <div id="message-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50 p-4">
+        <div class="bg-gray-800 rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center transform transition-all scale-95 opacity-0" id="modal-content">
+            <h3 id="modal-title" class="text-2xl font-bold mb-4"></h3>
+            <p id="modal-message" class="text-gray-300 mb-6"></p>
+            <button id="modal-close-btn" class="bg-indigo-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-indigo-500 transition-colors">Close</button>
+        </div>
+    </div>
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const packages = [
+                    { diamonds: 55, bonus: 5, price: 75, id: 1 },
+                    { diamonds: 86, bonus: 8, price: 110, id: 2 },
+                    { diamonds: 165, bonus: 15, price: 215, id: 3 },
+                    { diamonds: 172, bonus: 16, price: 220, id: 4 },
+                    { diamonds: 257, bonus: 23, price: 320, id: 5 },
+                    { diamonds: 275, bonus: 25, price: 335, id: 6, special: 'Recharge Task Pack' },
+                    { diamonds: 312, bonus: 28, price: 390, id: 7 },
+                    { diamonds: 343, bonus: 31, price: 430, id: 8 },
+                    { diamonds: 514, bonus: 65, price: 640, id: 9 },
+                    { diamonds: 1000, bonus:165, price: 920, id: 10 },
+                    { diamonds: 1500, bonus: 250, price: 1234, id: 11 },
+                ];
+    
+                const packageContainer = document.getElementById('package-container');
+                const paymentContainer = document.getElementById('payment-container');
+                const buyNowBtn = document.getElementById('buy-now-btn');
+                const modal = document.getElementById('message-modal');
+                const modalContent = document.getElementById('modal-content');
+                const modalTitle = document.getElementById('modal-title');
+                const modalMessage = document.getElementById('modal-message');
+                const modalCloseBtn = document.getElementById('modal-close-btn');
+    
+                let selectedPackage = null;
+                let selectedPayment = null;
+    
+                // default modal close handlers (use named functions so we can add/remove reliably)
+                function onModalCloseDefault() {
+                    hideModal();
+                }
+    
+                function onModalCloseAfterOrder() {
+                    hideModal();
+                    setTimeout(() => {
+                        showModal('Payment Successful!', 'Your diamonds will be credited to your account shortly. Thank you for your purchase!');
+                        // restore default close behavior after showing success
+                        modalCloseBtn.removeEventListener('click', onModalCloseAfterOrder);
+                        modalCloseBtn.addEventListener('click', onModalCloseDefault);
+                    }, 500);
+                }
+    
+                // --- Populate UI ---
+    
+                packages.forEach((pkg, index) => {
+                    const packageEl = document.createElement('div');
+                    packageEl.classList.add('package-item', 'p-4', 'border-2', 'border-gray-700', 'rounded-lg', 'cursor-pointer', 'hover:border-yellow-400', 'transition-all', 'text-center');
+                    if (index === 0) {
+                        packageEl.classList.add('package-selected');
+                        selectedPackage = pkg;
+                    }
+                    packageEl.innerHTML = `
+                        <div class="font-bold text-lg text-white">${pkg.diamonds} <span class="text-sm text-cyan-400">+${pkg.bonus}💎</span></div>
+                        ${pkg.special ? `<div class="text-xs text-yellow-400 mt-1">${pkg.special}</div>` : ''}
+                        <div class="font-semibold text-gray-300 mt-2">₹${pkg.price}</div>`;
+                    packageEl.addEventListener('click', () => selectPackage(packageEl, pkg));
+                    packageContainer.appendChild(packageEl);
+                });
+    
+                const paymentOptions = paymentContainer.querySelectorAll('.payment-option');
+                paymentOptions.forEach(option => {
+                    option.addEventListener('click', () => selectPayment(option));
+                });
+                
+                // Set default payment
+                selectPayment(paymentOptions[0]);
+    
+    
+                // --- Functions ---
+                
+                function showModal(title, message) {
+                    modalTitle.textContent = title;
+                    modalMessage.textContent = message;
+                    // preserve line breaks from template strings
+                    modalMessage.style.whiteSpace = 'pre-line';
+                    modal.classList.remove('hidden');
+                    setTimeout(() => {
+                        modalContent.classList.remove('scale-95', 'opacity-0');
+                        modalContent.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                }
+    
+                function hideModal() {
+                     modalContent.classList.remove('scale-100', 'opacity-100');
+                     modalContent.classList.add('scale-95', 'opacity-0');
+                     setTimeout(() => {
+                        modal.classList.add('hidden');
+                     }, 200);
+                }
+    
+                // attach the default close handler
+                modalCloseBtn.addEventListener('click', onModalCloseDefault);
+                modal.addEventListener('click', (e) => {
+                    if(e.target === modal) {
+                        hideModal();
+                    }
+                });
+    
+    
+                function selectPackage(element, pkg) {
+                    document.querySelectorAll('.package-item').forEach(el => el.classList.remove('package-selected'));
+                    element.classList.add('package-selected');
+                    selectedPackage = pkg;
+                }
+    
+                function selectPayment(element) {
+                    document.querySelectorAll('.payment-option').forEach(el => el.classList.remove('payment-selected'));
+                    element.classList.add('payment-selected');
+                    selectedPayment = element.textContent;
+                }
+    
+                buyNowBtn.addEventListener('click', () => {
+                    const userId = document.getElementById('userId').value;
+                    const serverId = document.getElementById('serverId').value;
+    
+                    if (!userId || !serverId) {
+                        showModal('Error', 'Please enter your User ID and Server ID.');
+                        return;
+                    }
+    
+                    if (!selectedPackage) {
+                         showModal('Error', 'Please select a diamond package.');
+                        return;
+                    }
+                    
+                    if (!selectedPayment) {
+                        showModal('Error', 'Please select a payment method.');
+                        return;
+                    }
+    
+                    const summary = `
+    User ID: ${userId}
+    Server ID: ${serverId}
+    Package: ${selectedPackage.diamonds} + ${selectedPackage.bonus} Diamonds
+    Price: ₹${selectedPackage.price}
+    Payment Method: ${selectedPayment}
+                    `;
+                    
+                    // show the actual summary and preserve newlines
+                    showModal('Order Summary', summary.trim());
+                    
+                    // simulate payment: replace the close button behavior once to simulate redirect/confirmation
+                    modalCloseBtn.removeEventListener('click', onModalCloseDefault);
+                    modalCloseBtn.addEventListener('click', onModalCloseAfterOrder, { once: true });
+                });
+            });
+        </script>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
+            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-indigo-500"></div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-12 text-center text-gray-400 text-sm">
+            <div class="max-w-7xl mx-auto px-4 py-8 border-t border-gray-800">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                <h4 class="font-bold text-white mb-4">Support</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">FAQs</a></li>
+                </ul>
+                </div>
+                <div>
+                <h4 class="font-bold text-white mb-4">Legal</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Refund Policy</a></li>
+                </ul>
+                </div>
+                <div>
+                <h4 class="font-bold text-white mb-4">Follow Us</h4>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="hover:text-white transition-colors">Facebook</a>
+                    <a href="#" class="hover:text-white transition-colors">Twitter</a>
+                    <a href="#" class="hover:text-white transition-colors">Instagram</a>
+                </div>
+                </div>
+            </div>
+            <div class="mt-8">
+                © 2024 Mobile Legends Diamond Store. All rights reserved.
+            </div>
+            </div>
+        </footer>
+
+    </body>
+    </html>
