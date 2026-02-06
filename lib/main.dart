@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'screens/diamond_store_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'src/screens/diamond_store_screen.dart';
+import 'src/providers/auth_provider.dart';
 
-void main() {
-  runApp(const HarisdiamApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await Firebase.initializeApp();
+  } catch (e) {
+    debugPrint("Firebase init failed: $e");
+  }
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => AuthProvider())],
+      child: const HarisdiamApp(),
+    ),
+  );
 }
 
 class HarisdiamApp extends StatelessWidget {
@@ -12,7 +26,7 @@ class HarisdiamApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'HariDiamondStore | MLBB Top-up',
+      title: 'zimutzofficialstore | MLBB Top-up',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
@@ -22,7 +36,6 @@ class HarisdiamApp extends StatelessWidget {
           primary: Color(0xFFEBC169),
           secondary: Color(0xFF00C8F0), // Cylinder Blue
           surface: Color(0xFF151A2D), // Card Background
-          background: Color(0xFF0B1120),
         ),
         textTheme: GoogleFonts.rajdhaniTextTheme(
           Theme.of(context).textTheme.apply(

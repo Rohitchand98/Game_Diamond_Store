@@ -1,0 +1,98 @@
+# Product Requirements Document (PRD): Harisdiam
+
+## 1. Executive Summary
+**Harisdiam** is a web-based platform dedicated to providing Mobile Legends: Bang Bang (MLBB) players with a seamless, secure, and automated diamond top-up service. The platform aims to offer competitive pricing, instant delivery, and a user-friendly experience, mimicking the efficiency of top-tier top-up sites.
+
+## 2. Problem Statement
+Players often face issues with:
+- High transaction fees on official stores.
+- Slow delivery times from manual sellers.
+- confusing user interfaces.
+- Lack of trust in third-party vendors.
+
+## 3. Goals & Objectives
+- **Automated Delivery:** Integrate with MLBB top-up APIs to ensure instant diamond crediting.
+- **Secure Payments:** Support multiple payment gateways (UPI, Card, Wallets) securely.
+- **User Experience:** Provide a premium, responsive "Dark Mode" UI that appeals to gamers.
+- **Reliability:** 99.9% uptime with 24/7 support availability.
+
+## 4. Target Audience
+- **Primary:** Mobile Legends: Bang Bang players looking for affordable and fast diamond top-ups.
+- **Secondary:** Resellers who might bulk buy (future scope).
+
+## 5. User Stories
+### 5.1 Customer
+- As a **user**, I want to **enter my Game ID and Server ID** so that the diamonds are sent to the correct account.
+- As a **user**, I want to **view available diamond packages** with clear pricing and bonus details.
+- As a **user**, I want to **select a payment method** (UPI, Card, Wallet) that is convenient for me.
+- As a **user**, I want to **receive an immediate confirmation** and the diamonds after payment.
+- As a **user**, I want to **see a 'Success' message** or receipt after a transaction.
+
+### 5.2 Admin (Future Scope)
+- As an **admin**, I want to **update package prices** dynamically.
+- As an **admin**, I want to **view transaction logs** to solve customer disputes.
+- As an **admin**, I want to **toggle payment methods** on/off based on availability.
+
+## 6. Functional Requirements
+
+### 6.1 Frontend (Flutter Web)
+- **Responsive Design:** Must work flawlessly on Desktop (clean 2-column layout) and Mobile (stacked layout).
+- **Hero Section:** Engaging visual header with "Mobile Legends" branding.
+- **Input Validation:**
+  - **User ID:** Numeric only.
+  - **Server ID:** Numeric only (typically 4 digits).
+  - Validation must happen before "Buy Now" is clickable.
+- **Package Selection:**
+  - Grid layout of diamond packages.
+  - Visual highlighting of selected package.
+  - "Bonus" and "Special" tags for specific cards.
+- **Payment Method Selection:**
+  - Dynamic list of supported methods.
+  - Visual selection state.
+- **Order Confirmation:**
+  - Modal/Dialog summary before final checkout.
+  - Displays: User ID, Server ID, Item, Price, Payment Method.
+
+### 6.2 Backend & API (Planned)
+- **Game ID Validation API:** (Optional but recommended) Verify if the User ID + Server ID exists before payment.
+- **Top-Up Provider Integration:** Connect with a third-party aggregator (e.g., Smile One, UniPin, or specific MLBB API distributors) to automate the diamond transfer.
+- **Payment Gateway:** Integration with Razorpay/Stripe/PayPal (or manual UPI verification for MVP).
+
+## 7. Non-Functional Requirements
+- **Performance:** Application load time under 2 seconds.
+- **Security:** HTTPS encryption. No storage of sensitive card details (handled by payment gateway).
+- **Scalability:** Capable of handling 100+ concurrent transactions.
+- **Availability:** Service should be hosted on a reliable server (currently planned for local hosting via Apache2 for dev/testing, but production requires a cloud VPS).
+
+## 8. Technical Architecture
+- **Frontend Framework:** Flutter Web.
+- **Language:** Dart.
+- **State Management:** `setState` (current), migrate to `Provider`/`Bloc` for complex state.
+- **Hosting:** Apache2 (Development), Firebase Hosting / Vercel / Nginx (Production).
+- **DNS:** Bind (Development/Local), Cloudflare (Production).
+
+## 9. Roadmap / Milestones
+### Phase 1: MVP (Current)
+- [x] Static UI Implementation.
+- [x] Responsive Layout.
+- [x] Mockup Purchase Flow.
+- [ ] Form Validation Logic.
+
+### Phase 2: Integration
+- [ ] Connect to Real Payment Gateway (Test Mode).
+- [ ] Connect to Diamond Top-Up API (Sandbox).
+- [ ] Implement backend server (Node.js/Python/Go) to handle secrets.
+
+### Phase 3: Production
+- [ ] Deploy to public domain.
+- [ ] Enable Live Payments.
+- [ ] Add User Authentication (optional, for purchase history).
+
+## 10. Design & UI/UX Guidelines
+- **Theme:** Dark/Gaming aesthetic.
+- **Colors:** Slate 900 (`#111827`), Indigo Accent (`#4f46e5`), Yellow Warning (`#facc15`).
+- **Typography:** Google Fonts 'Inter'.
+- **Interactions:**
+  - Hover effects on package cards.
+  - Ripple effects on buttons.
+  - Smooth transitions between states.

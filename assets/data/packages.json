@@ -1,0 +1,79 @@
+[
+    {
+        "id": 1,
+        "diamonds": 55,
+        "bonus": 5,
+        "price": 75,
+        "specialTag": null
+    },
+    {
+        "id": 2,
+        "diamonds": 86,
+        "bonus": 8,
+        "price": 110,
+        "specialTag": null
+    },
+    {
+        "id": 3,
+        "diamonds": 165,
+        "bonus": 15,
+        "price": 215,
+        "specialTag": "Best Seller"
+    },
+    {
+        "id": 4,
+        "diamonds": 172,
+        "bonus": 16,
+        "price": 220,
+        "specialTag": null
+    },
+    {
+        "id": 5,
+        "diamonds": 257,
+        "bonus": 23,
+        "price": 320,
+        "specialTag": null
+    },
+    {
+        "id": 6,
+        "diamonds": 275,
+        "bonus": 25,
+        "price": 335,
+        "specialTag": "Recharge Task Pack"
+    },
+    {
+        "id": 7,
+        "diamonds": 312,
+        "bonus": 28,
+        "price": 390,
+        "specialTag": null
+    },
+    {
+        "id": 8,
+        "diamonds": 343,
+        "bonus": 31,
+        "price": 430,
+        "specialTag": null
+    },
+    {
+        "id": 9,
+        "diamonds": 514,
+        "bonus": 65,
+        "price": 640,
+        "specialTag": "Big Bonus"
+    },
+    {
+        "id": 10,
+        "diamonds": 1000,
+        "bonus": 165,
+        "price": 920,
+        "specialTag": null
+    },
+    {
+        "id": 11,
+        "diamonds": 1500,
+        "bonus": 250,
+        "price": 1234,
+        "specialTag": "Whale Pack"
+    }
+]

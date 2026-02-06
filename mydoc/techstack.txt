@@ -1,0 +1,49 @@
+# Technology Stack & Architecture
+
+## 1. Overview
+The **Harisdiam** project is a web-based e-commerce platform built primarily with **Flutter** for the frontend interface. To support secure transactions, API integrations, and scalable hosting, the following technology stack is defined.
+
+## 2. Frontend (Client-Side)
+- **Framework:** [Flutter](https://flutter.dev) (Web Channel)
+- **Language:** Dart 3.x
+- **Core Libraries:**
+  - `provider`: For efficient state management (cart, user session).
+  - `google_fonts`: For consistent, premium typography (Inter/Roboto).
+  - `url_launcher`: For handling external links (support, social media).
+  - `dio` (Planned): For robust HTTP networking/API calls.
+- **Design System:**
+  - Custom Material 3 Dark Theme.
+  - Responsive Layout (Adaptive for Mobile & Desktop).
+
+## 3. Backend (Server-Side) - *Recommended*
+While the current version is a static UI, a backend is **critical** for processing payments and securing API keys (Diamond providers).
+- **Runtime:** [Node.js](https://nodejs.org/) (LTS) or [Python](https://www.python.org/).
+- **Framework:** Express.js (Node) or FastAPI (Python).
+- **Responsibilities:**
+  - **Payment Processing:** Handle webhooks from Razorpay/Stripe securely.
+  - **Top-Up API Proxy:** securely call diamond provider APIs (e.g., Smile One, UniPin) without exposing secrets to the frontend.
+  - **Validation:** Verify User IDs and Server IDs before transactions.
+
+## 4. Database
+- **Primary Store:** [PostgreSQL](https://www.postgresql.org/) or [MongoDB](https://www.mongodb.com/).
+  - *Usage:* Storing transaction history, order status, and user logs.
+- **Caching (Optional):** Redis (for session management or caching API responses).
+
+## 5. Infrastructure & Hosting
+- **Web Server:** [Apache2](https://httpd.apache.org/) (User Requirement).
+  - Configured as a reverse proxy to serve the Flutter Web build and forward API requests.
+- **DNS Management:** [BIND9](https://www.isc.org/bind/) (User Requirement).
+  - Managing local DNS entries for development/testing domains.
+- **Production (Alternative):** Firebase Hosting or Vercel for the static frontend + Cloud Functions for the backend (if moving away from self-hosted).
+
+## 6. External Services (APIs)
+- **Payment Gateway:** Razorpay / Stripe / PhonePe (UPI flows).
+- **Diamond Provider:** Third-party aggregators (Smile One, GoldRazer, etc.) via REST API.
+- **Auth:** Firebase Auth (Optional, for easy social login).
+
+## 7. Development Tools
+- **IDEs:** VS Code / Android Studio.
+- **Version Control:** Git.
+- **Testing:**
+  - `flutter_test` (Unit/Widget tests).
+  - Integration testing for payment flows.

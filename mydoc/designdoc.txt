@@ -1,0 +1,63 @@
+Design Document: Harisdiam
+1. Design Philosophy
+The Harisdiam platform requires a "Gamer-First" aesthetic. It should feel immersive, premium, and trustworthy. The design leverages dark themes with high-contrast neon accents (Indigo/Yellow) to match the Mobile Legends: Bang Bang branding.
+
+2. Visual Identity
+2.1 Color Palette
+Color Name	Hex Code	Usage
+Background Dark	#111827 (Gray 900)	Main scaffold background. Deep and immersive.
+Surface Dark	#1f2937 (Gray 800)	Cards, Modals, and Section backgrounds.
+Primary Accent	#4f46e5 (Indigo 600)	Selected states, primary buttons, focus borders.
+Secondary Accent	#facc15 (Yellow 400)	"Buy Now" buttons, special badges, discounts.
+Text Primary	#FFFFFF (White)	Headings, vital info.
+Text Secondary	#9ca3af (Gray 400)	Descriptions, helper text.
+Success	#4ade80 (Green 400)	Success messages, "delivered" status.
+Error	#f87171 (Red 400)	Validation errors.
+2.2 Typography
+Font Family: Inter (Google Fonts).
+Headings: Bold / ExtraBold (800).
+Body: Regular (400) / Medium (500).
+Numbers (Prices/Diamonds): SemiBold (600) for readability.
+3. UI Component Architecture
+3.1 Atoms (Basic Elements)
+GradientButton: A primary button with a subtle gradient (Indigo -> Purple) for main actions.
+GlassContainer: Used for overlays, utilizing BackdropFilter with blur for a modern "glassmorphism" feel.
+DiamondIcon: A custom SVG or asset representing the currency.
+3.2 Molecules (Interactive Groups)
+PackageCard:
+Displays: Diamond amount, Bonus amount, Price.
+State: Default (Gray Border), Hover (Glow), Selected (Yellow Border + Glow).
+Animation: Slight scale-up on hover.
+PaymentSelector:
+Horizontal list of payment logos.
+Active state fills background with Primary Accent.
+3.3 Organisms (Complex Sections)
+HeroHeader: Contains the logo, game title, and a dynamic background image with a dark overlay.
+UserForm: Two inputs (User ID, Server ID) side-by-side on desktop, stacked on mobile. Validates input in real-time.
+OrderSummaryModal: A popup showing breakdown before purchase confirmation.
+4. Layout Strategy (Responsive)
+4.1 Desktop (> 1024px)
+Two-Column Layout:
+Left (40%): Static Info (Game details, Instructions, Support Badges).
+Right (60%): Interactive Form (User ID -> Packages -> Payment -> Checkout).
+Container Width: Max constrained to 1280px centered.
+4.2 Tablet (600px - 1024px)
+Single Column: Left section (Instructions) moves to the bottom or becomes a collapsible "How to Buy" accordion.
+Grid: Package grid adjusts to 3 columns.
+4.3 Mobile (< 600px)
+Stacked Layout: Vertical scrolling.
+Grid: Package grid becomes 2 columns for touch friendliness.
+Touch Targets: Minimum 44x44px for all buttons.
+5. User Flows
+5.1 Purchase Flow
+Landing: User arrives, sees "Mobile Legends" branding.
+Identification: User inputs ID & Server ID. System (mock) validates length.
+Selection: User taps a Diamond Package. Card glows to indicate selection.
+Payment Method: User selects "UPI".
+Action: User clicks "Buy Now".
+Confirmation: Modal appears with full details.
+Checkout: User confirms. App shows loading spinner -> Success Message.
+6. Accessibility & micro-interactions
+Focus Rings: Visible focus states for keyboard navigation.
+Contrast: Ensure text meets WCAG AA standards (Gray 400 on Gray 900).
+Feedback: Buttons show a ripple effect on tap. Inputs shake gently on error.
