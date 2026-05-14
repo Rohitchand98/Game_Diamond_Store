@@ -46,3 +46,23 @@ Use these commands whenever you want to **update** your online repository with t
     git push origin main
     ```
     *(This command uploads ALL your committed files to the general "main" branch. It does NOT just update main.dart.)*
+
+---
+
+## 💎 Harisdiam: Premium Gaming Store
+
+Harisdiam is a high-performance, full-stack e-commerce solution for gaming top-ups, featuring:
+
+*   **Responsive Flutter Web UI**: Modern Material 3 design with dark mode.
+*   **Firebase Integration**: Real-time Firestore database and Firebase Auth.
+*   **Relational Data**: Powered by Firebase Data Connect (PostgreSQL & GraphQL).
+*   **Cross-Platform Architecture**: Designed for both Web and Mobile.
+
+### 📚 Detailed Documentation
+
+For a deeper dive into the project, please refer to the documents in the `mydoc/` directory:
+
+*   [**Official Project Documentation**](file:///c:/Users/rs486/Documents/AutoProj/hariProj/mydoc/PROJECT_DOCUMENTATION.md): Detailed architecture, tech stack, and roadmap.
+*   [**Interview Preparation Guide**](file:///c:/Users/rs486/Documents/AutoProj/hariProj/mydoc/INTERVIEW_PREP.md): Technical deep-dives and full-stack strategy.
+*   [**Design Document**](file:///c:/Users/rs486/Documents/AutoProj/hariProj/mydoc/designdoc.txt): UI/UX and visual guidelines.
+
